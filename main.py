@@ -1,42 +1,19 @@
-import dict as d
+import function as f
 
-string = 'Hello World!'
+program_on = True
 
+while program_on:
 
-# TODO!: I need the script to break down each word into a list:
+    mode_selection = input("Hello and welcome to the Morse Encoder and Decoder. The program takes strings as input, and depending on the mode, \n"
+                        "turns them into morse coded strings or vice versa. Please choose a mode (encode or decode, and exit): \n")
 
-word_list = string.split(" ")
+    if mode_selection == 'encode':
+        message = input("Please enter the message you would like to be coded in morse: \n")
+        print(f.encode_message(message=message))
 
-# TODO!: I need the script to then break down each letter of every word into letters and convert them into mores equivalent:
-
-morse_word_letters = []
-morse_word_list = []
-
-# Here I try to loop through every word in the split string:
-for n in range(0, len(word_list)):
-    # And another loop for looping through every character in the word:
-    for l in word_list[n]:
-        # I then append the encoded letter into a new list:
-        morse_word_letters.append(d.encode[l.upper()])
-    # Then I join it into a word, together with a dash / that simbolises a new letter. 
-    morse_word_list.append("/".join(morse_word_letters))
-    # I then drop the word list to get ready for the new word in the loop:
-    morse_word_letters = []
-
-morse_string = " ".join(morse_word_list)
-print(morse_string)
-# First and foremost I split the encoded morse sentance into a list:
-encoded_word_list = morse_string.split(" ")
-
-decoded_word = []
-decoded_list = []
-
-for n in range(0, len(encoded_word_list)):
-    clean_morse_word = encoded_word_list[n].split("/")
-    for l in clean_morse_word:
-          decoded_word.append(d.decode[l])
-    decoded_list.append("".join(decoded_word))
-    decoded_word = []
-    
-
-print(" ".join(decoded_list).title())
+    elif mode_selection == 'decode':
+        message = input("Please enter the message in morse you would like to be translated: \n"
+                        "(NOTE: Morse letters contain . and -, each letter is seperated by / and each word by a ' ') \n"
+                        "(e.g. )")
+        try: 
+            print(message)
